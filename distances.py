@@ -56,6 +56,9 @@ for j in range(len(keys)):
         distMat[k,j] = distMat[j,k]
 
 fig,ax = plt.subplots(figsize=(8,8))
+fig.suptitle("PA Entropy MDS, weighted")
+
+'''
 ax.imshow(distMat);
 ax.xaxis.tick_top()
 plt.show()
@@ -65,7 +68,6 @@ plt.show()
 mds = manifold.MDS(n_components=2, dissimilarity='precomputed')
 results = mds.fit(distMat)
 coords = results.embedding_
-fig,ax = plt.subplots(figsize=(8,8))
 z = coords[:,0]
 y = coords[:,1]
 ax.scatter(z, y)
@@ -73,5 +75,5 @@ for k in range(len(keys)):
     ax.annotate(keys[k], (z[k], y[k]))
 
 plt.show()
-'''
+
 
