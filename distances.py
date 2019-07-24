@@ -56,7 +56,7 @@ for j in range(len(keys)):
         distMat[k,j] = distMat[j,k]
 
 fig,ax = plt.subplots(figsize=(8,8))
-fig.suptitle("PA Entropy MDS, weighted")
+fig.suptitle("PA Entropy MDS, unweighted")
 
 '''
 ax.imshow(distMat);
