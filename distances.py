@@ -17,16 +17,16 @@ map_json_file = "res/PA_VTD.json"
 vtd_column = "VTDST10"
 population_column = "TOT_POP"
 popper_column = "pop_percent"
-plans = dict(   [ ("2011 Enacted", "2011_PLA_1")
-                , ("Governor's counter-proposal", "GOV")
-                , ("Turzai-Scarnati", "TS")
-                , ("2018 Enacted Remedial", "REMEDIAL_P")
-                , ("538 Compact", "538CPCT__1")
-                , ("538 Democratic", "538DEM_PL")
-                , ("538 Republican", "538GOP_PL")
-                , ("8th Grade", "8THGRADE_1")
+plans = dict(   [ ("2011", "2011_PLA_1")
+                , ("GOV", "GOV")
+                , ("TS", "TS")
+                , ("REM", "REMEDIAL_P")
+                , ("CPCT", "538CPCT__1")
+                , ("DEM", "538DEM_PL")
+                , ("REP", "538GOP_PL")
+                , ("8TH", "8THGRADE_1")
                 ])
-weight_by_population = False
+weight_by_population = True
 
 myupdaters = {
         "population": Tally(population_column, alias="population")
@@ -55,12 +55,22 @@ for j in range(len(keys)):
         distMat[j,k] = rel_entropy(graph, partitions[keys[j]], partitions[keys[k]])
         distMat[k,j] = distMat[j,k]
 
-fig,ax = plt.subplots(figsize=(8,8))
-fig.suptitle("PA Entropy MDS, unweighted")
+print(distMat)
 
-'''
-ax.imshow(distMat);
-ax.xaxis.tick_top()
+fig,ax = plt.subplots(figsize=(8,8))
+# fig.suptitle("PA Entropy heatmap, weighted")
+
+#ax.pcolor(distMat);
+#ax.xaxis.tick_top()
+#plt.show()
+
+heatmap = ax.pcolor(distMat)
+plt.colorbar(heatmap)
+ax.set_xticks(np.arange(distMat.shape[1]) + 0.5, minor=False)
+ax.set_yticks(np.arange(distMat.shape[1]) + 0.5, minor=False)
+ax.invert_yaxis()
+ax.set_xticklabels(plans.keys())
+ax.set_yticklabels(plans.keys())
 plt.show()
 
 '''
@@ -75,5 +85,5 @@ for k in range(len(keys)):
     ax.annotate(keys[k], (z[k], y[k]))
 
 plt.show()
-
+'''
 
