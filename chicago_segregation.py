@@ -83,4 +83,7 @@ print("Black 2010: " + str(segregation(il2010, ["NH_BLACK"], "TOTPOP")))
 print("His 1990: " + str(segregation(il2010, ["HIS_TOT_1990"], "TOTPOP_1990")))
 print("His 2000: " + str(segregation(il2010, ["HIS_TOT_2000"], "TOTPOP_2000")))
 print("His 2010: " + str(segregation(il2010, ["HIS_TOT"], "TOTPOP")))
+print("White 1990: " + str(segregation(il2010, ["NH_WHITE_1990"], "TOTPOP_1990")))
+print("White 2000: " + str(segregation(il2010, ["NH_WHITE_2000"], "TOTPOP_2000")))
+print("White 2010: " + str(segregation(il2010, ["NH_WHITE"], "TOTPOP")))
 
